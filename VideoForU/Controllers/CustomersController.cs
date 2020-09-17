@@ -36,6 +36,15 @@ namespace VideoForU.Controllers
         [HttpPost]
         public ActionResult Save( Customer customer)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewmodel = new CustomerFormViewModel
+                {
+                    Customer = customer,
+                    MembershipTypes = _context.MembershipTypes.ToList()
+                };
+                return View("CustomerForm", viewmodel);
+            }
             //creation of Customer
             if (customer.Id == 0)
             {

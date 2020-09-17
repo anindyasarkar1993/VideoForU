@@ -10,7 +10,7 @@ namespace VideoForU.Models
     public class Customer
     {
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please Enter Customer's Name")]
         [StringLength(255)]
         public string Name { get; set; }
 
